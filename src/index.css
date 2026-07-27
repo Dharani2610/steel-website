@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@layer base {
+  :root, html.dark {
+    --bg-primary: #05070B;
+    --bg-secondary: #0B1118;
+    --steel-gray: #8C99A5;
+    --accent-blue: #00D4FF;
+    --secondary-accent: #4F46E5;
+    --highlight-orange: #FF8C00;
+    --text-main: #FFFFFF;
+    --text-muted: #8C99A5;
+    --glass-bg: rgba(11, 17, 24, 0.75);
+    --glass-border: rgba(140, 153, 165, 0.15);
+    --glass-card-bg: linear-gradient(135deg, rgba(11, 17, 24, 0.8) 0%, rgba(5, 7, 11, 0.9) 100%);
+    --blueprint-grid: rgba(0, 212, 255, 0.05);
+    color-scheme: dark;
+  }
+
+  html.light {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --steel-gray: #475569;
+    --accent-blue: #0088CC;
+    --secondary-accent: #4338CA;
+    --highlight-orange: #EA580C;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-border: rgba(0, 136, 204, 0.25);
+    --glass-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.95) 100%);
+    --blueprint-grid: rgba(0, 136, 204, 0.08);
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: 'Times New Roman', Times, serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .font-heading {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .font-body {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  /* Professional, clean engineering numbers (Replacing sci-fi digital font) */
+  .font-numbers {
+    font-family: 'Times New Roman', Times, serif;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Custom Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.light .glass-card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.2);
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(0, 136, 204, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 136, 204, 0.15);
+}
+
+.blueprint-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--blueprint-grid) 1px, transparent 1px);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+}
+
+html.light .glow-text-cyan {
+  text-shadow: 0 0 8px rgba(0, 136, 204, 0.3);
+}
+
+.glow-box-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+html.light .glow-box-cyan {
+  box-shadow: 0 0 15px rgba(0, 136, 204, 0.2);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--steel-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00D4FF;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 5px rgba(0,212,255,0.4)); }
+  50% { opacity: 0.9; filter: drop-shadow(0 0 15px rgba(0,212,255,0.8)); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* Realistic Truck Animations */
+@keyframes engine-vibrate {
+  0%, 100% { transform: translateY(0px) skewX(0.01deg); }
+  25% { transform: translateY(-0.3px) skewX(-0.01deg); }
+  50% { transform: translateY(0.15px) skewX(0deg); }
+  75% { transform: translateY(-0.15px) skewX(0.01deg); }
+}
+
+@keyframes suspension-bounce {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  20% { transform: translateY(-1.0px) rotate(0.03deg); }
+  40% { transform: translateY(0.6px) rotate(-0.02deg); }
+  60% { transform: translateY(-0.3px) rotate(0.01deg); }
+  80% { transform: translateY(0.15px) rotate(-0.01deg); }
+}
+
+@keyframes shadow-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; filter: blur(12px); }
+  20% { transform: scale(1.02); opacity: 0.75; filter: blur(14px); }
+  40% { transform: scale(0.98); opacity: 0.9; filter: blur(10px); }
+  60% { transform: scale(1.01); opacity: 0.8; filter: blur(13px); }
+  80% { transform: scale(0.99); opacity: 0.85; filter: blur(11px); }
+}
+
+@keyframes wheel-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.animate-engine-vibrate {
+  animation: engine-vibrate 0.14s linear infinite;
+}
+
+.animate-suspension-bounce {
+  animation: suspension-bounce 3.5s ease-in-out infinite;
+}
+
+.animate-shadow-breathe {
+  animation: shadow-breathe 3.5s ease-in-out infinite;
+}
+
+.animate-wheel-spin {
+  animation: wheel-spin 0.34s linear infinite;
+}
+
+/* Mega Menu Dropdown slide down & fade in effect */
+@keyframes dropdownSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown-in {
+  animation: dropdownSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Infinite Horizontal Marquee Animation for Industry Leaders */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
