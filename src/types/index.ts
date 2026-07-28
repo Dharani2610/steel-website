@@ -1,12 +1,22 @@
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface ServiceItem {
   id: string;
   title: string;
   subtitle: string;
   iconName: string;
   description: string;
+  fullDescription?: string;
   deliverables: string[];
+  capabilities?: string[];
+  applications?: string[];
   software: string[];
   benefits: string[];
+  processSteps?: string[];
+  faqs?: FAQItem[];
   color: string;
 }
 
@@ -20,6 +30,9 @@ export interface ProjectItem {
   completionYear: string;
   heroImage: string;
   description: string;
+  challenge?: string;
+  solution?: string;
+  outcome?: string;
   memberCount: string;
   drawingCount: string;
   cadPreviewUrl?: string;
@@ -31,6 +44,26 @@ export interface ProjectItem {
   };
 }
 
+export interface IndustryItem {
+  id: string;
+  title: string;
+  iconName: string;
+  image: string;
+  tagline: string;
+  description: string;
+  keyServices: string[];
+  featuredStat: string;
+}
+
+export interface ProcessStep {
+  stepNumber: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  deliverables: string[];
+  qualityChecks: string[];
+}
+
 export interface OfficeLocation {
   id: string;
   country: string;
@@ -38,7 +71,7 @@ export interface OfficeLocation {
   address: string;
   phone: string;
   email: string;
-  coordinates: { x: number; y: number }; // Percentage for 2D map fallback or 3D globe coordinates
+  coordinates: { x: number; y: number };
   lat: number;
   lng: number;
   timezone: string;
@@ -68,3 +101,4 @@ export interface Testimonial {
 }
 
 export type StoryStage = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+

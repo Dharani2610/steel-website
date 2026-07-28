@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { PhoneCall, ChevronRight, Menu, X } from 'lucide-react';
+import { Phone, Mail, ChevronRight, Menu, X, ShieldCheck, ArrowRight } from 'lucide-react';
 import { CaldimLogo } from '../common/CaldimLogo';
 
 interface NavbarProps {
   onRequestQuote: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  onRequestQuote
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState<string>('#');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 40) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -25,20 +25,22 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navLinks = [
-    { label: 'HOME', href: '#' },
-    { label: 'WHAT WE DO', href: '#services' },
-    { label: 'PROJECTS', href: '#story' },
-    { label: 'ABOUT', href: '#global' },
+    { label: 'Overview', href: '#' },
+    { label: 'Company Story', href: '#story' },
+    { label: 'Services', href: '#services', hasDropdown: true },
+    { label: 'Industries', href: '#industries' },
+    { label: 'Why Us', href: '#why-us' },
+    { label: 'QA Process', href: '#process' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
   ];
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [localActiveLink, setLocalActiveLink] = useState<string>('#');
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    setIsDropdownOpen(false);
-    setLocalActiveLink(href);
+    setIsServicesDropdownOpen(false);
+    setActiveHash(href);
+
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -51,238 +53,206 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header
-      className="fixed top-4 left-4 right-4 z-50 mx-auto max-w-7xl w-[calc(100%-2rem)] bg-transparent"
-    >
-      {/* Top Navbar Row */}
-      <div 
-        className="w-full bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-slate-200/80 px-6 py-3 flex items-center justify-between rounded-full"
-      >
-        {/* Brand Logo & Name */}
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            setLocalActiveLink('#');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="flex items-center gap-3 group"
-        >
-          <div className="relative p-1 rounded-xl bg-gradient-to-br from-[#0084FF]/20 to-[#4F46E5]/20 border border-[#0084FF]/40 flex items-center justify-center group-hover:border-[#0084FF] group-hover:shadow-[0_0_20px_rgba(0,132,255,0.6)] transition-all">
-            <CaldimLogo className="w-9 h-7 text-[#0084FF]" />
+    <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
+      {/* Top Utility Bar - Clean, spacious corporate alignment */}
+      <div className="hidden lg:block bg-[#0A192F] text-slate-300 text-xs border-b border-slate-800/80 py-2.5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Left Compliance Badge */}
+          <div className="flex items-center gap-4 sm:gap-6 text-[11px] sm:text-xs">
+            <span className="flex items-center gap-1.5 text-amber-500 font-semibold">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
+              AISC Quality & PE/SE Registered Engineers
+            </span>
+            <span className="text-slate-600">|</span>
+            <span className="text-slate-400">Tekla Structures & SDS2 Certified Partner</span>
           </div>
-          <span className="font-heading font-black text-2xl tracking-wider text-black">
-            CALDIM
-          </span>
-        </a>
 
-        {/* Center Nav Items */}
-        <nav className="hidden lg:flex items-center gap-6 px-4 py-1 transition-colors">
-          {navLinks.map((link) => {
-            const isActive = localActiveLink === link.href;
-            if (link.label === 'WHAT WE DO') {
+          {/* Right Contact Details */}
+          <div className="flex items-center gap-6 text-[11px] sm:text-xs font-medium">
+            <a href="tel:+18005552253" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone className="w-3.5 h-3.5 text-[#3A6C8C]" />
+              <span>+1 (800) 555-CALD</span>
+            </a>
+            <a href="mailto:inquiry@caldimengineering.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Mail className="w-3.5 h-3.5 text-[#3A6C8C]" />
+              <span>inquiry@caldimengineering.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Corporate Header */}
+      <div
+        className={`w-full transition-all duration-300 ${
+          isScrolled
+            ? 'bg-[#0F2744]/95 backdrop-blur-md shadow-xl border-b border-slate-700/60 py-3'
+            : 'bg-[#0F2744] border-b border-slate-800 py-3.5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Logo & Brand Identity */}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveHash('#');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-3 group shrink-0"
+          >
+            <div className="w-10 h-10 rounded-sm bg-[#3A6C8C]/30 border border-[#3A6C8C]/50 flex items-center justify-center group-hover:border-amber-500 transition-colors">
+              <CaldimLogo className="w-7 h-7 text-white group-hover:text-amber-500 transition-colors" />
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="font-sans font-bold text-xl tracking-wider text-white uppercase leading-none">
+                CALDIM
+              </span>
+              <span className="text-[10px] tracking-[0.2em] font-medium text-slate-400 uppercase mt-0.5">
+                Engineering Services
+              </span>
+            </div>
+          </a>
+
+          {/* Center Nav Items */}
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+            {navLinks.map((link) => {
+              const isActive = activeHash === link.href;
+
+              if (link.hasDropdown) {
+                return (
+                  <div key={link.label} className="relative group">
+                    <button
+                      onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                      className={`text-xs font-semibold tracking-wider uppercase py-2 transition-colors flex items-center gap-1 cursor-pointer ${
+                        isActive || isServicesDropdownOpen ? 'text-amber-500' : 'text-slate-200 hover:text-white'
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronRight className="w-3.5 h-3.5 rotate-90 text-slate-400 group-hover:text-amber-500 transition-transform" />
+                    </button>
+
+                    {/* Desktop Services Mega Dropdown */}
+                    <div className="absolute top-full left-0 w-80 bg-[#0A192F] border border-slate-700 shadow-2xl rounded-sm py-3 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 translate-y-2 group-hover:translate-y-0 text-left">
+                      <div className="px-4 py-2 border-b border-slate-800 text-[11px] font-semibold text-amber-500 uppercase tracking-wider">
+                        Core Capabilities
+                      </div>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        Structural Steel Detailing
+                      </a>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        PE/SE Connection Engineering
+                      </a>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        Tekla Structures BIM Detailing
+                      </a>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        SDS2 3D Steel Modeling
+                      </a>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        3D Rebar Detailing & BBS
+                      </a>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        Miscellaneous & Architectural Metals
+                      </a>
+                      <a
+                        href="#services"
+                        onClick={(e) => handleNavClick(e, '#services')}
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                      >
+                        BIM Coordination & Clash Detection
+                      </a>
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsDropdownOpen(!isDropdownOpen);
-                    setLocalActiveLink(link.href);
-                  }}
-                  className={`px-1 py-1.5 text-xs font-body tracking-wider transition-all border-b-2 cursor-pointer ${
-                    isActive || isDropdownOpen
-                      ? 'text-[#0084FF] border-[#0084FF] font-bold'
-                      : 'text-slate-600 border-transparent hover:text-[#0084FF] hover:border-slate-300'
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-xs font-semibold tracking-wider uppercase py-2 transition-colors relative whitespace-nowrap ${
+                    isActive ? 'text-amber-500' : 'text-slate-200 hover:text-white'
                   }`}
                 >
                   {link.label}
+                  {isActive && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500" />}
                 </a>
               );
-            }
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`px-1 py-1.5 text-xs font-body tracking-wider transition-all border-b-2 ${
-                  isActive
-                    ? 'text-[#0084FF] border-[#0084FF] font-bold'
-                    : 'text-slate-600 border-transparent hover:text-[#0084FF] hover:border-slate-300'
-                }`}
-              >
-                {link.label}
-              </a>
-            );
-          })}
-        </nav>
+            })}
+          </nav>
 
-        {/* Right CTA / Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
+          {/* Right Action CTA */}
+          <div className="hidden sm:flex items-center gap-4 shrink-0">
+            <button
+              onClick={onRequestQuote}
+              className="px-4 sm:px-5 py-2.5 rounded-sm bg-[#D97706] hover:bg-[#B45309] text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+            >
+              <span>Request Proposal</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
 
-          <button
-            onClick={onRequestQuote}
-            className="relative group px-5 py-2.5 rounded-full bg-gradient-to-r from-[#0084FF] to-[#4F46E5] text-white font-heading font-bold text-xs uppercase tracking-wider overflow-hidden shadow-[0_0_20px_rgba(0,132,255,0.4)] hover:shadow-[0_0_30px_rgba(0,132,255,0.7)] transition-all transform hover:-translate-y-0.5"
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              Request Quote
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </span>
-            <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-          </button>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="flex sm:hidden items-center gap-2">
-
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-800"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu Toggle */}
+          <div className="flex lg:hidden items-center">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-sm bg-[#0A192F] text-white border border-slate-700"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mega Dropdown Panel (WHAT WE DO) */}
-      {isDropdownOpen && (
-        <div 
-          className="hidden lg:block w-full bg-black text-white p-8 mt-2 rounded-3xl relative border border-slate-800 shadow-2xl animate-dropdown-in"
-        >
-          {/* Close button top left */}
-          <button
-            onClick={() => setIsDropdownOpen(false)}
-            className="absolute -top-2.5 -left-2.5 w-7 h-7 rounded-full bg-[#0084FF] border-2 border-white flex items-center justify-center text-white font-black text-xs hover:bg-[#0066CC] transition-all shadow-lg cursor-pointer z-20"
-            title="Close Menu"
-          >
-            ✕
-          </button>
-
-          <div className="grid grid-cols-4 gap-8 pt-2 pl-4">
-            {/* Column 1: Structural & Design */}
-            <div>
-              <h4 className="font-heading font-black text-sm text-[#0084FF] tracking-wider uppercase mb-4">
-                Structural & Design
-              </h4>
-              <ul className="space-y-2.5 font-body text-xs text-slate-300">
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Structural Steel Detailing
-                </li>
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Connection Design
-                </li>
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Precast Detailing & Design
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 2: BIM & Coordination */}
-            <div>
-              <h4 className="font-heading font-black text-sm text-[#0084FF] tracking-wider uppercase mb-4">
-                BIM & Coordination
-              </h4>
-              <ul className="space-y-2.5 font-body text-xs text-slate-300">
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  BIM Services & Coordination
-                </li>
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Rebar Detailing
-                </li>
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  MEP Coordination
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3: Specialized Detailing */}
-            <div>
-              <h4 className="font-heading font-black text-sm text-[#0084FF] tracking-wider uppercase mb-4">
-                Specialized Detailing
-              </h4>
-              <ul className="space-y-2.5 font-body text-xs text-slate-300">
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Architectural Detailing
-                </li>
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Shop & Erection Drawings
-                </li>
-                <li 
-                  onClick={(e) => handleNavClick(e as any, '#services')}
-                  className="hover:text-[#0084FF] cursor-pointer transition-colors"
-                >
-                  Tekla & SDS2 3D Detailing
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 4: Image Showcase Card */}
-            <div className="relative group/card overflow-hidden rounded-2xl border border-slate-800 shadow-inner flex items-end p-4 min-h-[160px] bg-slate-900">
-              <img
-                src="/hero-bg.png"
-                alt="CALDIM Steel Construction Expertise"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover/card:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              <div className="relative z-10 flex items-center justify-between w-full">
-                <span className="font-heading font-bold text-sm text-white">Expertise</span>
-                <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center text-[#0084FF] shadow-md group-hover/card:bg-[#0084FF] group-hover/card:text-white transition-all">
-                  <ChevronRight className="w-4 h-4" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden backdrop-blur-xl border border-slate-200/80 px-6 py-6 space-y-3 animate-fadeIn rounded-3xl bg-white/95 text-slate-900 shadow-xl mt-2 w-full">
+        <div className="lg:hidden bg-[#0A192F] text-white border-b border-slate-800 px-6 py-6 space-y-3 shadow-2xl text-left">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`block text-sm font-heading font-semibold py-2.5 border-b border-slate-100 transition-colors ${
-                localActiveLink === link.href ? 'text-[#0084FF]' : 'text-slate-800 hover:text-[#0084FF]'
+              className={`block text-xs font-semibold uppercase tracking-wider py-2.5 border-b border-slate-800 transition-colors ${
+                activeHash === link.href ? 'text-amber-500' : 'text-slate-200 hover:text-white'
               }`}
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-4 flex flex-col gap-3">
+          <div className="pt-4">
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 onRequestQuote();
               }}
-              className="w-full py-3 rounded-full bg-gradient-to-r from-[#0084FF] to-[#4F46E5] text-white font-heading font-bold text-xs uppercase tracking-wider text-center"
+              className="w-full py-3 rounded-sm bg-[#D97706] hover:bg-[#B45309] text-white font-semibold text-xs uppercase tracking-wider text-center"
             >
-              Request Engineering Quote
+              Request Engineering Proposal
             </button>
           </div>
         </div>

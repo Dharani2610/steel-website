@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { Navbar } from './components/navigation/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
 import { StatsCounter } from './components/stats/StatsCounter';
-import { WhatWeDoSection } from './components/whatwedo/WhatWeDoSection';
+import { CompanyStorySection } from './components/story/CompanyStorySection';
 import { ServicesSection } from './components/services/ServicesSection';
+import { IndustriesSection } from './components/industries/IndustriesSection';
+import { WhyChooseUsSection } from './components/why/WhyChooseUsSection';
+import { ProcessSection } from './components/process/ProcessSection';
+import { PortfolioSection } from './components/portfolio/PortfolioSection';
 import { TestimonialsSection } from './components/testimonials/TestimonialsSection';
-import { GlobalPresenceSection } from './components/global/GlobalPresenceSection';
 import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/footer/Footer';
 import { RequestQuoteModal } from './components/contact/RequestQuoteModal';
@@ -13,49 +16,54 @@ import { RequestQuoteModal } from './components/contact/RequestQuoteModal';
 export function App() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
-  // Force Light Theme permanently across the site
+  // Ensure clean corporate styling theme permanently
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove('dark');
     root.classList.add('light');
-    localStorage.setItem('apex_theme', 'light');
   }, []);
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen selection:bg-[#0084FF] selection:text-white transition-colors duration-300">
-      {/* Floating Glass Navbar Header */}
-      <Navbar
-        onRequestQuote={() => setIsQuoteModalOpen(true)}
-      />
+    <div className="bg-[#F6F7F8] text-[#1E293B] min-h-screen selection:bg-[#0F2744] selection:text-white font-sans antialiased">
+      {/* Sticky Corporate Header Navigation */}
+      <Navbar onRequestQuote={() => setIsQuoteModalOpen(true)} />
 
-      {/* Hero Section */}
-      <HeroSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
+      {/* Main Corporate Hero Section */}
+      <main>
+        <HeroSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
 
-      {/* Animated Statistics Banner */}
-      <StatsCounter />
+        {/* Corporate Metrics & Compliance Banner */}
+        <StatsCounter />
 
-      {/* WHAT WE DO 4-Card Section (Business sectors, Products, Expertise, Projects) */}
-      <WhatWeDoSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
+        {/* Company Overview & Philosophy */}
+        <CompanyStorySection />
 
-      {/* OUR SERVICES 4-Card Section (Reference 1st Image) */}
-      <ServicesSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
+        {/* Core Structural Steel Services & Capabilities */}
+        <ServicesSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
 
-      {/* Empty Projects / Story Division Anchor */}
-      <section id="story" className="w-full" />
+        {/* Sectors & Industries Served */}
+        <IndustriesSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
 
-      {/* Client Testimonials */}
-      <TestimonialsSection />
+        {/* Why Choose CALDIM / Technical Precision Commitment */}
+        <WhyChooseUsSection />
 
-      {/* 3D Global Offices Globe */}
-      <GlobalPresenceSection />
+        {/* 6-Step Technical Quality Assurance Workflow */}
+        <ProcessSection />
 
-      {/* Blueprint Contact Section */}
-      <ContactSection />
+        {/* Portfolio & Case Studies Showcase */}
+        <PortfolioSection onRequestQuote={() => setIsQuoteModalOpen(true)} />
 
-      {/* Footer */}
+        {/* Client Endorsements & Reviews */}
+        <TestimonialsSection />
+
+        {/* Direct Contact & Inquiry Form */}
+        <ContactSection />
+      </main>
+
+      {/* Corporate Footer */}
       <Footer />
 
-      {/* Request Quote Global Modal Drawer */}
+      {/* Instant Estimation & Proposal Modal Drawer */}
       <RequestQuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => setIsQuoteModalOpen(false)}

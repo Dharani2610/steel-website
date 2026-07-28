@@ -1,86 +1,81 @@
 import React from 'react';
-import { ShieldCheck, Zap, Users, Cpu, CheckCircle, DollarSign } from 'lucide-react';
+import { ShieldCheck, Target, Cpu, CheckCircle2, Clock, Scale } from 'lucide-react';
 
 export const WhyChooseUsSection: React.FC = () => {
-  const reasons = [
+  const pillars = [
     {
-      icon: ShieldCheck,
-      title: 'Global Code Standards',
-      desc: 'Full compliance with AISC, NISD, BS, Eurocode, and AS/NZS codes with certified PE/SE engineering seals.',
-      color: '#00D4FF'
+      icon: Target,
+      title: '99.8% Fit-Up Accuracy Guarantee',
+      description: 'Our multi-stage independent checking process ensures member lengths, bolt clearances, and assembly piece marks match design specs perfectly, preventing expensive field cutting.'
     },
     {
-      icon: Zap,
-      title: 'Fast Turnaround Delivery',
-      desc: 'Round-the-clock 24/7 global delivery workflow reducing shop drawing turnaround by up to 40%.',
-      color: '#FF8C00'
-    },
-    {
-      icon: Users,
-      title: 'Experienced Steel Engineers',
-      desc: 'Team of 150+ licensed structural engineers, Tekla masters, and senior steel detailers with 15+ years experience.',
-      color: '#4F46E5'
+      icon: Scale,
+      title: 'PE/SE Licensed Engineering Seals',
+      description: 'Registered Professional Engineers (PE/SE) across US states and global code bodies deliver signed and sealed connection calculations backed by Finite Element Analysis (FEA).'
     },
     {
       icon: Cpu,
-      title: 'Advanced 3D Automation',
-      desc: 'Custom Tekla Open API plugins and automated CNC DSTV data pipelines guaranteeing zero shop fit-up errors.',
-      color: '#00D4FF'
+      title: 'Direct CNC Machine Interoperability',
+      description: 'We generate validated NC/DSTV data, DXF plate cutting files, and Kiss/FabTrol export formats to feed automated steel fabrication lines seamlessly.'
     },
     {
-      icon: CheckCircle,
-      title: '3-Tier QA/QC Process',
-      desc: 'Rigorous 3-level quality check (Detailer -> Checker -> Lead Engineer) before any drawing package release.',
-      color: '#FF8C00'
+      icon: ShieldCheck,
+      title: 'Multi-Discipline BIM Clash Audit',
+      description: 'Federated 3D models inside Navisworks Manage detect spatial conflicts between structural steel, MEP piping, and concrete cores prior to drawing sign-off.'
     },
     {
-      icon: DollarSign,
-      title: 'Cost-Effective Engineering',
-      desc: 'Optimized steel weight through connection value engineering, saving tons of steel on major erections.',
-      color: '#4F46E5'
+      icon: Clock,
+      title: 'Rapid Turnaround & Multi-User Capacity',
+      description: 'Leveraging Tekla Model Sharing, our teams scale capacity instantly for fast-track megastructures while maintaining rigid revision control.'
+    },
+    {
+      icon: CheckCircle2,
+      title: 'Global Code Compliance (AISC/Eurocode)',
+      description: 'Adhering to AISC 360, AISC 341 Seismic, NISD, AWS D1.1, BS EN 1090, and AS/NZS specifications tailored to your regional site authority.'
     }
   ];
 
   return (
-    <section className="py-24 px-4 bg-[var(--bg-secondary)] transition-colors duration-300 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[#00D4FF] font-numbers text-xs uppercase tracking-wider mb-4">
-            WHY CHOOSE APEX STEEL
+    <section id="why-us" className="py-20 bg-[#FFFFFF] border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16 text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-[#3A6C8C]/10 border border-[#3A6C8C]/30 text-[#3A6C8C] text-xs font-semibold uppercase tracking-widest mb-4">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Why Leading Fabricators Choose CALDIM</span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-current tracking-tight">
-            Built On Uncompromising <br />
-            <span className="text-[#00D4FF] glow-text-cyan">Accuracy & Reliability</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F2744] tracking-tight leading-tight mb-4">
+            Technical Precision. Zero Site Rework.
           </h2>
+          <p className="text-slate-600 text-base leading-relaxed">
+            We operate as an extension of your structural engineering and shop detailing department, guaranteeing code compliance, fabrication speed, and field fitment.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((item, idx) => {
-            const Icon = item.icon;
+        {/* 6 Quality Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {pillars.map((pillar, idx) => {
+            const Icon = pillar.icon;
             return (
               <div
                 key={idx}
-                className="glass-panel p-6 rounded-2xl border border-[#8C99A5]/20 hover:border-[#00D4FF]/50 transition-all group"
+                className="bg-[#F6F7F8] p-6 rounded-sm border border-slate-200 text-left hover:border-[#3A6C8C] transition-all group"
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center border mb-4 group-hover:scale-110 transition-transform"
-                  style={{
-                    backgroundColor: `${item.color}15`,
-                    borderColor: `${item.color}40`
-                  }}
-                >
-                  <Icon className="w-6 h-6" style={{ color: item.color }} />
+                <div className="w-10 h-10 rounded-sm bg-white border border-slate-200 flex items-center justify-center text-[#3A6C8C] group-hover:bg-[#0F2744] group-hover:text-amber-500 transition-colors mb-4">
+                  <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading text-lg font-bold text-current mb-2 group-hover:text-[#00D4FF] transition-colors">
-                  {item.title}
+                <h3 className="text-base font-bold text-[#0F2744] mb-2 group-hover:text-[#3A6C8C] transition-colors">
+                  {pillar.title}
                 </h3>
-                <p className="font-body text-xs text-[var(--text-muted)] leading-relaxed">
-                  {item.desc}
+                <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                  {pillar.description}
                 </p>
               </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

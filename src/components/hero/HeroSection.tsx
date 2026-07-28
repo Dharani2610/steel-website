@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, CheckCircle2, FileText, Cpu } from 'lucide-react';
 
 interface HeroSectionProps {
   onRequestQuote: () => void;
@@ -7,54 +7,101 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onRequestQuote }) => {
   return (
-    <section className="w-full bg-[#F8FAFC] pt-24 pb-4 px-3 sm:px-5 lg:px-6 transition-colors duration-300">
-      {/* Hero Background Card with 1cm White Border Frame & Curved Corners */}
-      <div className="relative min-h-[calc(100vh-7.5rem)] flex flex-col justify-center items-center text-center px-4 py-20 overflow-hidden rounded-[2.5rem] bg-[#05070B] text-white shadow-2xl border border-slate-200/50">
-        {/* 3D Generated Architectural Structural Steel Background Image */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[2.5rem]">
-          <img
-            src="/hero-bg.png"
-            alt="CALDIM Structural Steel Detailing Engineering Background"
-            className="w-full h-full object-cover object-center opacity-85 transition-all duration-500 scale-105 filter saturate-[1.85] contrast-[1.15] brightness-[0.96] sepia-[6%]"
-          />
-          {/* Soft Center Vignette & Radial Contrast Mask for Ultra-Readable Text */}
-          <div className="absolute inset-0 bg-radial from-[#05070B]/75 via-[#05070B]/45 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#05070B]/80 via-transparent to-[#05070B]" />
-          {/* Sunset Warm Orange Light Leak & Blend Enhancement */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 via-orange-500/15 to-transparent mix-blend-multiply pointer-events-none" />
-        </div>
+    <section className="relative w-full bg-[#0F2744] text-white pt-36 sm:pt-40 lg:pt-44 pb-20 lg:pb-28 overflow-hidden blueprint-grid-dark">
+      {/* Subtle Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/95 via-[#0F2744]/85 to-[#0F2744] pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-          {/* Main Hero Headline */}
-          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
-            CALDIM Engineering <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-[#0084FF] via-[#38BDF8] to-[#EAB308] bg-clip-text text-transparent glow-text-cyan">
-              Every Connection With Precision
-            </span>
-          </h1>
+      {/* Decorative Technical CAD Blueprint Accent Lines */}
+      <div className="absolute top-24 right-10 w-96 h-96 border border-slate-700/30 rounded-full pointer-events-none hidden lg:block" />
+      <div className="absolute top-44 right-28 w-64 h-64 border border-slate-700/20 rounded-full pointer-events-none hidden lg:block" />
 
-          {/* Subtitle Paragraph */}
-          <p className="max-w-3xl font-body text-base sm:text-xl text-slate-300 leading-relaxed mb-10">
-            Delivering Structural Steel Detailing, PE/SE Connection Design, 3D BIM Modeling, Shop Drawings and Engineering Products for Construction Projects Worldwide.
-          </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Hero Content */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Top Corporate Status Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-[#3A6C8C]/20 border border-[#3A6C8C]/40 text-slate-200 text-xs font-semibold uppercase tracking-widest mb-6">
+              <ShieldCheck className="w-4 h-4 text-amber-500" />
+              <span>AISC & PE/SE Certified Engineering Firm</span>
+            </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-4">
-            <button
-              onClick={onRequestQuote}
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0084FF] to-[#4F46E5] text-white font-heading font-bold text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(0,132,255,0.5)] hover:shadow-[0_0_45px_rgba(0,132,255,0.8)] hover:scale-105 transition-all flex items-center gap-3"
-            >
-              <span>Request CALDIM Quote</span>
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            {/* Main Editorial Headline */}
+            <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-6">
+              Precision Structural Steel <br />
+              <span className="text-[#3A6C8C]">Detailing & Engineering</span>
+            </h1>
 
-            <a
-              href="#services"
-              className="px-7 py-4 rounded-xl bg-[#0B1118]/80 border border-[#8C99A5]/30 text-white font-heading font-semibold text-sm hover:border-[#0084FF] hover:text-[#0084FF] transition-all backdrop-blur-md shadow-md"
-            >
-              Explore Services
-            </a>
+            {/* Sub-headline Paragraph */}
+            <p className="font-sans text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
+              CALDIM provides high-accuracy 3D Tekla BIM modeling, PE/SE sealed connection design, and CNC-integrated fabrication shop drawings for industrial plants, commercial towers, and infrastructure megastructures worldwide.
+            </p>
+
+            {/* Primary Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-12">
+              <button
+                onClick={onRequestQuote}
+                className="px-7 py-3.5 rounded-sm bg-[#D97706] hover:bg-[#B45309] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-xl flex items-center gap-2.5"
+              >
+                <span>Request Project Proposal</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <a
+                href="#services"
+                className="px-6 py-3.5 rounded-sm bg-[#0A192F] hover:bg-[#1E293B] text-slate-200 border border-slate-700 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center gap-2"
+              >
+                <span>Engineering Capabilities</span>
+                <FileText className="w-4 h-4 text-[#3A6C8C]" />
+              </a>
+            </div>
+
+            {/* Trust Bullet Items */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 w-full text-xs text-slate-300 font-medium">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                <span>99.8% Fit-Up Accuracy</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                <span>PE/SE Sealed Calculations</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                <span>NC/DSTV Automated Export</span>
+              </div>
+            </div>
           </div>
+
+          {/* Right Hero Visual Card - Guaranteed Local 3D Structural Steel Detailing & Erection Asset */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-sm overflow-hidden border border-slate-700/80 shadow-2xl bg-[#0A192F] group">
+              <img
+                src="/hero-bg.png"
+                alt="CALDIM 3D Structural Steel Detailing & Erection Framework"
+                className="w-full h-80 sm:h-[420px] object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/20 to-transparent" />
+
+              {/* Technical Badge Overlay */}
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-sm bg-[#0F2744]/95 border border-slate-700/80 backdrop-blur-md">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-sm bg-[#3A6C8C]/20 border border-[#3A6C8C]/40 text-amber-500">
+                    <Cpu className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white uppercase tracking-wider">
+                      Tekla Structures & SDS2 3D Modeling
+                    </div>
+                    <div className="text-[11px] text-slate-300 font-technical-num mt-0.5">
+                      Multi-User BIM Execution | AISC 360 Compliant
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

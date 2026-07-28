@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
-import { Play, Pause, RotateCcw, Eye } from 'lucide-react';
+import { Play, Pause, RotateCcw } from 'lucide-react';
 import { CaldimLogo } from '../common/CaldimLogo';
 
 interface IsometricConstructionCanvasProps {
@@ -573,7 +573,7 @@ export const IsometricConstructionCanvas: React.FC<IsometricConstructionCanvasPr
       { x: 6.75, y: 9.5, rotZ: -slopeAngle }
     ];
 
-    deckSpecs.forEach((spec, idx) => {
+    deckSpecs.forEach((spec) => {
       const panelGeo = new THREE.BoxGeometry(4.6, 0.08, 12.4);
       const panel = new THREE.Mesh(panelGeo, matGrating);
       panel.position.set(spec.x, spec.y + 0.35, 0);
@@ -806,7 +806,6 @@ export const IsometricConstructionCanvas: React.FC<IsometricConstructionCanvasPr
     // --- PHASE 6: METAL DECK & SKYLIGHTS (29s - 34s) ---
     // Corrugated metal decking panels slide into alignment
     deckPanels.forEach((panel, i) => {
-      const spec = deckSpecs[i];
       tl.to(panel.scale, { x: 1, y: 1, z: 1, duration: 0.8, ease: 'power2.out' }, 29.0 + i * 0.8);
     });
 

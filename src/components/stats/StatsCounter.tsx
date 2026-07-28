@@ -1,46 +1,53 @@
 import React from 'react';
-import { FileText, Database, Cpu, Shield } from 'lucide-react';
+import { Award, ShieldCheck, Layers, FileCheck } from 'lucide-react';
 
 export const StatsCounter: React.FC = () => {
-  const items = [
+  const stats = [
     {
-      icon: FileText,
-      title: 'Deliverables',
-      sub: 'Shop, Erection, Anchor Bolt Plans',
+      icon: Award,
+      value: '350+',
+      label: 'Mega Projects Detailed',
+      description: 'Heavy industrial, commercial & infrastructure'
     },
     {
-      icon: Database,
-      title: 'CNC Data',
-      sub: 'DSTV, DXF, IFC, SDNF, CIS/2',
+      icon: ShieldCheck,
+      value: '99.8%',
+      label: 'Fit-Up Accuracy Rate',
+      description: 'Zero shop re-cuts & zero site fitment delays'
     },
     {
-      icon: Cpu,
-      title: 'Software',
-      sub: 'SDS/2, Tekla, Bluebeam',
+      icon: Layers,
+      value: '100%',
+      label: 'AISC & Eurocode Compliant',
+      description: 'Strict adherence to global detailing codes'
     },
     {
-      icon: Shield,
-      title: 'Standards',
-      sub: 'Pertaining to AISC, AWS, IBC, OSHA',
-    },
+      icon: FileCheck,
+      value: '50 States',
+      label: 'PE/SE Engineering Seals',
+      description: 'Registered Professional Engineers'
+    }
   ];
 
   return (
-    <section className="bg-[#E3E8ED] py-8 px-6 border-y border-slate-300/60 w-full transition-colors duration-300">
+    <section className="bg-[#FFFFFF] border-b border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {items.map((item, idx) => {
-            const Icon = item.icon;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
             return (
-              <div key={idx} className="flex flex-col items-center justify-center p-2 group">
-                <div className="p-2.5 rounded-xl text-[#475569] group-hover:text-[#0084FF] group-hover:scale-110 transition-all duration-300 mb-2">
+              <div key={idx} className="flex flex-col items-center text-center px-4 pt-4 sm:pt-0">
+                <div className="p-3 rounded-sm bg-[#F6F7F8] border border-slate-200 text-[#3A6C8C] mb-3">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h4 className="font-heading font-bold text-sm sm:text-base text-slate-800 tracking-tight">
-                  {item.title}
-                </h4>
-                <p className="font-body text-xs text-slate-500 mt-1">
-                  {item.sub}
+                <div className="font-sans text-3xl font-extrabold text-[#0F2744] font-technical-num mb-1">
+                  {stat.value}
+                </div>
+                <div className="font-sans font-bold text-xs uppercase tracking-wider text-slate-800 mb-1">
+                  {stat.label}
+                </div>
+                <p className="text-xs text-slate-500 max-w-xs">
+                  {stat.description}
                 </p>
               </div>
             );
