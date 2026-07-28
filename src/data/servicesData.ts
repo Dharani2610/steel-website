@@ -6,6 +6,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Structural Steel Detailing',
     subtitle: 'High-Precision 3D Modeling & Production Drawings',
     iconName: 'Box',
+    image: '/services/structural-detailing.png',
     description: 'Comprehensive 3D modeling and detailing of heavy structural steel frameworks adhering to AISC, NISD, BS, Eurocode, and AS/NZS standards with guaranteed clash-free erection.',
     fullDescription: 'CALDIM delivers multi-disciplinary structural steel detailing for complex industrial complexes, commercial towers, and infrastructure projects worldwide. Leveraging industry-leading Tekla Structures and SDS2 platforms, our detailing teams transform complex structural engineering calculations into production-ready 3D BIM models and 2D fabrication shop packages.',
     capabilities: [
@@ -57,6 +58,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Connection Engineering & Calculations',
     subtitle: 'PE/SE Stamped Calculations & Finite Element Analysis',
     iconName: 'Cpu',
+    image: '/services/connection-engineering.png',
     description: 'Advanced structural connection engineering for heavy moment, shear, brace, and truss joints complete with PE/SE stamped calculation sheets for US states and global jurisdictions.',
     fullDescription: 'Our licensed Structural Engineers (PE/SE) specialize in solving high-stress structural steel connections. Utilizing FEA (Finite Element Analysis) via IDEA Statica and RAM Connection, we produce structural connection design calculations that minimize material weight while streamlining shop fabrication and field bolting.',
     capabilities: [
@@ -107,6 +109,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Tekla Structures 3D BIM Detailing',
     subtitle: 'Enterprise Multi-User Parametric BIM Workflows',
     iconName: 'Layers',
+    image: '/services/tekla-structures.png',
     description: 'Expert execution of multi-user Tekla Model Sharing environments for ultra-large industrial, commercial, and infrastructure structural steel detailing.',
     fullDescription: 'CALDIM leverages Trimble Tekla Structures to drive parametric 3D BIM modeling for megastructures. Our team handles complex spatial geometries, custom component development, and real-time collaboration with general contractors, fabricators, and erectors.',
     capabilities: [
@@ -153,6 +156,7 @@ export const servicesData: ServiceItem[] = [
     title: 'SDS2 Steel Detailing & Automated Connection Intelligence',
     subtitle: 'Automated Framing Connection Verification & Modeling',
     iconName: 'Workflow',
+    image: '/services/sds2-detailing.png',
     description: 'Specialized 3D steel detailing using SDS2 connection intelligence for rapid framing execution and heavy industrial framing projects.',
     fullDescription: 'Utilizing SDS2 connection intelligence, CALDIM automates framing connection design while creating high-density steel models. This workflow ensures design rules are validated as members are detailed, drastically shortening engineering lead times.',
     capabilities: [
@@ -199,6 +203,7 @@ export const servicesData: ServiceItem[] = [
     title: '3D Rebar Detailing & Bar Bending Schedules',
     subtitle: 'Concrete Reinforced Bar Placement & Quantities',
     iconName: 'Grid',
+    image: '/services/rebar-detailing.png',
     description: 'Comprehensive 3D rebar placement modeling, automated Bar Bending Schedules (BBS), and coupler layout plans for heavy foundation slabs, cores, and civil structures.',
     fullDescription: 'Accurate reinforced concrete detailing prevents rebar congestion and steel placement errors on site. CALDIM provides detailed 3D rebar placement models and automated Bar Bending Schedules (BBS) adhering to ACI, BS 8666, and Eurocode standards.',
     capabilities: [
@@ -245,6 +250,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Miscellaneous Metals & Architectural Steel',
     subtitle: 'Stairs, Handrails, Industrial Platforms & Egress Systems',
     iconName: 'Maximize',
+    image: '/services/misc-steel.png',
     description: 'Intricate detailing of commercial egress stairs, monumental spiral staircases, industrial catwalks, platforms, handrails, and equipment framing.',
     fullDescription: 'Miscellaneous metal detailing requires high dimensional accuracy and adherence to safety codes (OSHA, IBC, ADA). CALDIM details commercial egress stairs, industrial catwalks, guardrails, ladders, and decorative steel frameworks with exact fabrication clarity.',
     capabilities: [
@@ -291,6 +297,7 @@ export const servicesData: ServiceItem[] = [
     title: 'BIM Coordination & 3D Clash Resolution',
     subtitle: 'Multi-Discipline Spatial Integration & Pre-Construction Audit',
     iconName: 'ShieldAlert',
+    image: '/services/bim-coordination.png',
     description: 'Multi-trade BIM federation and spatial clash detection between structural steel, MEP ductwork, piping, architectural facades, and concrete cores.',
     fullDescription: 'Unresolved spatial clashes cause expensive field rework and schedule delays. CALDIM federates architectural, structural, and MEP models inside Navisworks Manage to detect, track, and resolve trade interferences long before steel fabrication starts.',
     capabilities: [
@@ -337,6 +344,7 @@ export const servicesData: ServiceItem[] = [
     title: 'Shop & Erection Drawing Packages',
     subtitle: 'Production-Ready Shop Packs & Rigging Guides',
     iconName: 'FileText',
+    image: '/services/fabrication-drawings.png',
     description: 'Meticulously organized shop assembly drawings containing single-part sheets, erection key plans, field weld details, and center-of-gravity lift markings.',
     fullDescription: 'The true test of detailing quality is shop floor readability and field erection speed. CALDIM produces complete shop and erection drawing packages engineered to eliminate ambiguity for fabricator shop floors and field riggers.',
     capabilities: [
@@ -379,3 +387,4 @@ export const servicesData: ServiceItem[] = [
     color: '#D97706'
   }
 ];
+

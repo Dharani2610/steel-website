@@ -30,12 +30,12 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0A192F]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
-      <div className="relative w-full max-w-3xl bg-white border border-slate-300 shadow-2xl rounded-sm overflow-hidden my-8 max-h-[90vh] flex flex-col text-left font-sans">
+      <div className="relative w-full max-w-3xl bg-white border border-slate-300 shadow-2xl rounded-2xl sm:rounded-3xl overflow-hidden my-8 max-h-[90vh] flex flex-col text-left font-sans">
         
         {/* Modal Top Header */}
         <div className="bg-[#0F2744] text-white p-6 sm:p-8 flex items-start justify-between border-b border-slate-700 relative">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-[#3A6C8C]/30 text-amber-500 text-[11px] font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3A6C8C]/30 text-amber-500 text-[11px] font-bold uppercase tracking-wider mb-2">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Technical Bid & Estimating Transmittal</span>
             </div>
@@ -49,7 +49,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
 
           <button
             onClick={onClose}
-            className="p-2 rounded-sm bg-[#0A192F] hover:bg-amber-500 text-slate-300 hover:text-white transition-colors"
+            className="p-2.5 rounded-full bg-[#0A192F] hover:bg-amber-500 text-slate-300 hover:text-white transition-colors"
             title="Close Modal"
           >
             <X className="w-5 h-5" />
@@ -70,7 +70,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                   setIsSubmitted(false);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-sm bg-[#0F2744] text-white text-xs font-semibold uppercase tracking-wider mt-4"
+                className="px-6 py-2.5 rounded-full bg-[#0F2744] text-white text-xs font-semibold uppercase tracking-wider mt-4"
               >
                 Close Window
               </button>
@@ -87,7 +87,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Robert Vance"
-                    className="w-full px-3.5 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="e.g. Steel Fabricator & Erectors Corp"
-                    className="w-full px-3.5 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   />
                 </div>
               </div>
@@ -112,7 +112,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="robert@steelfabricator.com"
-                    className="w-full px-3.5 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   />
                 </div>
                 <div>
@@ -122,7 +122,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+1 (555) 019-2834"
-                    className="w-full px-3.5 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   />
                 </div>
               </div>
@@ -133,7 +133,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                   <select
                     value={formData.serviceType}
                     onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-3.5 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   >
                     <option>Structural Steel Detailing</option>
                     <option>PE/SE Connection Design</option>
@@ -150,7 +150,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                   <select
                     value={formData.codeStandard}
                     onChange={(e) => setFormData({ ...formData, codeStandard: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-3.5 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   >
                     <option>AISC 360 / 341 (USA)</option>
                     <option>BS EN 1993 Eurocode</option>
@@ -164,7 +164,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                   <select
                     value={formData.estimatedTonnage}
                     onChange={(e) => setFormData({ ...formData, estimatedTonnage: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                    className="w-full px-3.5 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                   >
                     <option>Under 500 Tons</option>
                     <option>500 - 1,500 Tons</option>
@@ -177,7 +177,7 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
               {/* Upload Dropzone */}
               <div>
                 <label className="block text-xs font-bold text-[#0F2744] mb-1">ATTACH CONTRACT DRAWINGS / IFC / SPEC FILES</label>
-                <div className="border-2 border-dashed border-slate-300 rounded-sm p-4 text-center bg-[#F6F7F8] hover:border-[#3A6C8C] transition-all cursor-pointer">
+                <div className="border-2 border-dashed border-slate-300 rounded-xl p-4 text-center bg-[#F6F7F8] hover:border-[#3A6C8C] transition-all cursor-pointer">
                   <Upload className="w-5 h-5 text-[#3A6C8C] mx-auto mb-1" />
                   <span className="text-xs font-semibold text-[#0F2744] block">
                     Drop .DWG, .IFC, .PDF, or .ZIP files here for estimation
@@ -193,14 +193,14 @@ export const RequestQuoteModal: React.FC<RequestQuoteModalProps> = ({ isOpen, on
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   placeholder="Specify target drawing transmittal dates, shop preferences, or connection design constraints..."
-                  className="w-full px-3.5 py-2.5 rounded-sm bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
+                  className="w-full px-4 py-3 rounded-xl bg-[#F6F7F8] border border-slate-300 text-xs text-slate-900 focus:border-[#3A6C8C] focus:outline-none"
                 />
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-sm bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-semibold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-semibold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   Submit Engineering Proposal Transmittal

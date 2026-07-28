@@ -3,6 +3,7 @@ import { Navbar } from './components/navigation/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
 import { StatsCounter } from './components/stats/StatsCounter';
 import { CompanyStorySection } from './components/story/CompanyStorySection';
+import { CareersSection } from './components/careers/CareersSection';
 import { ServicesSection } from './components/services/ServicesSection';
 import { IndustriesSection } from './components/industries/IndustriesSection';
 import { WhyChooseUsSection } from './components/why/WhyChooseUsSection';
@@ -15,6 +16,11 @@ import { RequestQuoteModal } from './components/contact/RequestQuoteModal';
 
 export function App() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [playAboutVideoSignal, setPlayAboutVideoSignal] = useState<number>(0);
+
+  const handleAboutUsClick = () => {
+    setPlayAboutVideoSignal(Date.now());
+  };
 
   // Ensure clean corporate styling theme permanently
   useEffect(() => {
@@ -26,7 +32,10 @@ export function App() {
   return (
     <div className="bg-[#F6F7F8] text-[#1E293B] min-h-screen selection:bg-[#0F2744] selection:text-white font-sans antialiased">
       {/* Sticky Corporate Header Navigation */}
-      <Navbar onRequestQuote={() => setIsQuoteModalOpen(true)} />
+      <Navbar
+        onRequestQuote={() => setIsQuoteModalOpen(true)}
+        onAboutUsClick={handleAboutUsClick}
+      />
 
       {/* Main Corporate Hero Section */}
       <main>
@@ -36,7 +45,10 @@ export function App() {
         <StatsCounter />
 
         {/* Company Overview & Philosophy */}
-        <CompanyStorySection />
+        <CompanyStorySection playVideoSignal={playAboutVideoSignal} />
+
+        {/* Global Careers & Employment Opportunities */}
+        <CareersSection />
 
         {/* Core Structural Steel Services & Capabilities */}
         <ServicesSection onRequestQuote={() => setIsQuoteModalOpen(true)} />

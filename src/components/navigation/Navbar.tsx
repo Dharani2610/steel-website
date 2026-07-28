@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, ChevronRight, Menu, X, ShieldCheck, ArrowRight } from 'lucide-react';
+import { ChevronRight, Menu, X } from 'lucide-react';
 import { CaldimLogo } from '../common/CaldimLogo';
 
 interface NavbarProps {
   onRequestQuote: () => void;
+  onAboutUsClick?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote, onAboutUsClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
@@ -26,7 +27,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
 
   const navLinks = [
     { label: 'Overview', href: '#' },
-    { label: 'Company Story', href: '#story' },
+    { label: 'About Us', href: '#story' },
+    { label: 'Careers', href: '#careers' },
     { label: 'Services', href: '#services', hasDropdown: true },
     { label: 'Industries', href: '#industries' },
     { label: 'Why Us', href: '#why-us' },
@@ -40,6 +42,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
     setIsMobileMenuOpen(false);
     setIsServicesDropdownOpen(false);
     setActiveHash(href);
+
+    if (href === '#story' && onAboutUsClick) {
+      onAboutUsClick();
+    }
 
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -55,31 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
       {/* Top Utility Bar - Clean, spacious corporate alignment */}
-      <div className="hidden lg:block bg-[#0A192F] text-slate-300 text-xs border-b border-slate-800/80 py-2.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Left Compliance Badge */}
-          <div className="flex items-center gap-4 sm:gap-6 text-[11px] sm:text-xs">
-            <span className="flex items-center gap-1.5 text-amber-500 font-semibold">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
-              AISC Quality & PE/SE Registered Engineers
-            </span>
-            <span className="text-slate-600">|</span>
-            <span className="text-slate-400">Tekla Structures & SDS2 Certified Partner</span>
-          </div>
-
-          {/* Right Contact Details */}
-          <div className="flex items-center gap-6 text-[11px] sm:text-xs font-medium">
-            <a href="tel:+18005552253" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone className="w-3.5 h-3.5 text-[#3A6C8C]" />
-              <span>+1 (800) 555-CALD</span>
-            </a>
-            <a href="mailto:inquiry@caldimengineering.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Mail className="w-3.5 h-3.5 text-[#3A6C8C]" />
-              <span>inquiry@caldimengineering.com</span>
-            </a>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Main Corporate Header */}
       <div
@@ -100,8 +82,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
             }}
             className="flex items-center gap-3 group shrink-0"
           >
-            <div className="w-10 h-10 rounded-sm bg-[#3A6C8C]/30 border border-[#3A6C8C]/50 flex items-center justify-center group-hover:border-amber-500 transition-colors">
-              <CaldimLogo className="w-7 h-7 text-white group-hover:text-amber-500 transition-colors" />
+            <div className="w-10 h-10 rounded-xl bg-[#3A6C8C]/20 border border-[#3A6C8C]/40 flex items-center justify-center group-hover:border-[#0099FF] transition-colors">
+              <CaldimLogo className="w-7 h-7 text-[#0099FF] group-hover:text-amber-500 transition-colors" />
             </div>
             <div className="flex flex-col text-left">
               <span className="font-sans font-bold text-xl tracking-wider text-white uppercase leading-none">
@@ -132,58 +114,58 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
                     </button>
 
                     {/* Desktop Services Mega Dropdown */}
-                    <div className="absolute top-full left-0 w-80 bg-[#0A192F] border border-slate-700 shadow-2xl rounded-sm py-3 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 translate-y-2 group-hover:translate-y-0 text-left">
+                    <div className="absolute top-full left-0 w-80 bg-[#0A192F] border border-slate-700 shadow-2xl rounded-2xl py-3 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 translate-y-2 group-hover:translate-y-0 text-left">
                       <div className="px-4 py-2 border-b border-slate-800 text-[11px] font-semibold text-amber-500 uppercase tracking-wider">
                         Core Capabilities
                       </div>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        Structural Steel Detailing
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">Structural Steel Detailing</span>
                       </a>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        PE/SE Connection Engineering
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">PE/SE Connection Engineering</span>
                       </a>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        Tekla Structures BIM Detailing
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">Tekla Structures BIM Detailing</span>
                       </a>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        SDS2 3D Steel Modeling
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">SDS2 3D Steel Modeling</span>
                       </a>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        3D Rebar Detailing & BBS
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">3D Rebar Detailing & BBS</span>
                       </a>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        Miscellaneous & Architectural Metals
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">Miscellaneous & Architectural Metals</span>
                       </a>
                       <a
                         href="#services"
                         onClick={(e) => handleNavClick(e, '#services')}
-                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-[#0F2744] hover:text-white transition-colors"
+                        className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-slate-800/60 hover:text-white transition-colors"
                       >
-                        BIM Coordination & Clash Detection
+                        <span className="inline-block border-b-2 border-transparent hover:border-[#D97706] pb-0.5">BIM Coordination & Clash Detection</span>
                       </a>
                     </div>
                   </div>
@@ -206,22 +188,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
             })}
           </nav>
 
-          {/* Right Action CTA */}
-          <div className="hidden sm:flex items-center gap-4 shrink-0">
-            <button
-              onClick={onRequestQuote}
-              className="px-4 sm:px-5 py-2.5 rounded-sm bg-[#D97706] hover:bg-[#B45309] text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-lg flex items-center gap-2"
-            >
-              <span>Request Proposal</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          
 
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-sm bg-[#0A192F] text-white border border-slate-700"
+              className="p-2 rounded-xl bg-[#0A192F] text-white border border-slate-700"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -250,7 +223,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
                 setIsMobileMenuOpen(false);
                 onRequestQuote();
               }}
-              className="w-full py-3 rounded-sm bg-[#D97706] hover:bg-[#B45309] text-white font-semibold text-xs uppercase tracking-wider text-center"
+              className="w-full py-3 rounded-full bg-[#D97706] hover:bg-[#B45309] text-white font-semibold text-xs uppercase tracking-wider text-center"
             >
               Request Engineering Proposal
             </button>

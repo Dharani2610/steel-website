@@ -37,7 +37,7 @@ export const TestimonialsSection: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 7000);
+    }, 10000);
     return () => clearInterval(timer);
   }, [testimonials.length]);
 

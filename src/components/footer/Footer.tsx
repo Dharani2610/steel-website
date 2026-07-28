@@ -18,8 +18,8 @@ export const Footer: React.FC = () => {
           {/* Brand Info (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <a href="#" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-sm bg-[#3A6C8C]/30 border border-[#3A6C8C]/50 flex items-center justify-center">
-                <CaldimLogo className="w-6 h-6 text-white" />
+              <div className="w-9 h-9 rounded-xl bg-[#3A6C8C]/20 border border-[#3A6C8C]/40 flex items-center justify-center">
+                <CaldimLogo className="w-6 h-6 text-[#0099FF]" />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-xl tracking-wider text-white uppercase leading-none">
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
               CALDIM Engineering is an international engineering firm delivering 3D structural steel detailing, PE/SE stamped connection calculations, Tekla BIM modeling, and fabrication shop drawings.
             </p>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-[#0F2744] border border-slate-700 text-amber-500 text-[11px] font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F2744] border border-slate-700 text-amber-500 text-[11px] font-bold uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5" />
               AISC 360 • NISD CERTIFIED • AWS D1.1 COMPLIANT
             </div>
@@ -65,6 +65,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs text-slate-400">
               <li><a href="#" className="hover:text-white transition-colors">Executive Overview</a></li>
               <li><a href="#story" className="hover:text-white transition-colors">Company Story & Philosophy</a></li>
+              <li><a href="#careers" className="hover:text-white transition-colors">Careers & Openings</a></li>
               <li><a href="#industries" className="hover:text-white transition-colors">Industries Served</a></li>
               <li><a href="#why-us" className="hover:text-white transition-colors">Quality Commitment</a></li>
               <li><a href="#process" className="hover:text-white transition-colors">6-Step QA Workflow</a></li>
@@ -81,15 +82,15 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 text-xs text-slate-400">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#3A6C8C] flex-shrink-0 mt-0.5" />
-                <span>100 Industrial Parkway, Suite 400<br />Houston, Texas 77002, USA</span>
+                <span>Caldim Tech Services LLC<br />8668 John Hickman Pkwy, Suite 903<br />Frisco, Texas 75034</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#3A6C8C] flex-shrink-0" />
-                <a href="tel:+18005552253" className="hover:text-white font-technical-num">+1 (800) 555-CALD</a>
+                <a href="tel:+12484553855" className="hover:text-white font-technical-num">+1 (248) 455-3855</a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#3A6C8C] flex-shrink-0" />
-                <a href="mailto:inquiry@caldimengineering.com" className="hover:text-white">inquiry@caldimengineering.com</a>
+                <a href="mailto:bala@caldimengg.com" className="hover:text-white">bala@caldimengg.com</a>
               </li>
             </ul>
           </div>
@@ -107,7 +108,7 @@ export const Footer: React.FC = () => {
             <a href="#" className="hover:text-slate-300">Terms of Transmittal</a>
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-[#0F2744] border border-slate-700 text-white hover:bg-amber-600 transition-colors font-sans text-xs uppercase tracking-wider"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0F2744] border border-slate-700 text-white hover:bg-amber-600 transition-colors font-sans text-xs uppercase tracking-wider"
             >
               <span>Back to Top</span>
               <ArrowUp className="w-3.5 h-3.5" />
